@@ -20,10 +20,15 @@ public class SQLiteDataHelper extends SQLiteOpenHelper {
      * Método é executado uma unica vez quando o aplicativo é instalado
      * é responsável por executar os scripts da criação das tabelas
      * @param sqLiteDatabase : base de dados que irá se criar as tabelas
+     *
+     * TABELA pedido O ID vai ser autoincrement
+     * TABELA pagamento e caixa o ID vai ser autoincrement
      */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        sqLiteDatabase.execSQL("CREATE TABLE pedido(id INTEGER, nome VARCHAR(30), quantidade INTEGER, valor NUMERIC(10,2))");
+        sqLiteDatabase.execSQL("CREATE TABLE pagamento(id INTEGER PRIMARY KEY AUTOINCREMENT, valor NUMERIC(10,2), data_pagamento DATE, cod_pedido INTEGER)");
+        sqLiteDatabase.execSQL("CREATE TABLE caixa(id INTEGER PRIMARY KEY AUTOINCREMENT, data_abertura DATE, data_fechamento DATE)");
     }
 
     @Override
