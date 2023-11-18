@@ -29,6 +29,7 @@ public class SQLiteDataHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE pedido(id INTEGER, nome VARCHAR(30), quantidade INTEGER, valor NUMERIC(10,2))");
         sqLiteDatabase.execSQL("CREATE TABLE pagamento(id INTEGER PRIMARY KEY AUTOINCREMENT, valor NUMERIC(10,2), data_pagamento DATE, cod_pedido INTEGER)");
         sqLiteDatabase.execSQL("CREATE TABLE caixa(id INTEGER PRIMARY KEY AUTOINCREMENT, data_abertura DATE, data_fechamento DATE)");
+        sqLiteDatabase.execSQL("CREATE TABLE login(id INTEGER PRIMARY KEY AUTOINCREMENT, login VARCHAR(20), senha VARCHAR(30))");
     }
 
     @Override
