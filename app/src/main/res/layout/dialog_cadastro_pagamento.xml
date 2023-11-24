@@ -5,13 +5,6 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="NOVO PAGAMENTO"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:textSize="20sp"/>-->
-
     <TextView
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
@@ -32,9 +25,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Informe o valor à pagar"
         android:inputType="numberDecimal"
-        android:text="R$"
         android:paddingStart="5dp"
         android:id="@+id/edValor"/>
 
@@ -49,26 +40,4 @@
         android:inputType="date"
         android:id="@+id/edDataPagamento"/>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <Button-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Cancelar"-->
-<!--            android:id="@+id/btCancelar"-->
-<!--            android:backgroundTint="@android:color/holo_red_dark"/>-->
-
-<!--        <Button-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Salvar"-->
-<!--            android:id="@+id/btSalvar"-->
-<!--            android:backgroundTint="@android:color/holo_green_dark"/>-->
-
-<!--    </LinearLayout>-->
 </LinearLayout>

@@ -18,6 +18,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Pedidos"
+        android:id="@+id/btPedido"
+        android:onClick="abrirTelaPedidos"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Pagamentos"
         android:id="@+id/btPagamentos"
         android:onClick="abrirTelaPagamentos"/>
