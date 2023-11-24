@@ -32,7 +32,7 @@ public class PagamentoDao implements IGenericDao<Pagamento>{
     private static PagamentoDao instancia;
 
     //TODO Variável para pegar a data do banco, pois não tem como passar direto a data para lista.
-    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     Date data = null;
 
     public static PagamentoDao getInstancia(Context context) {
@@ -56,9 +56,8 @@ public class PagamentoDao implements IGenericDao<Pagamento>{
     public long insert(Pagamento obj) {
         try {
             ContentValues valores = new ContentValues();
-            valores.put(colunas[0], obj.getIdPagamento());
             valores.put(colunas[1], obj.getValorPagamento());
-            valores.put(colunas[2], obj.getDataPagamento().getTime());
+            valores.put(colunas[2], obj.getDataPagamento());
             valores.put(colunas[3], obj.getCodPedido());
 
             return baseDados.insert(tabela, null, valores);
@@ -74,7 +73,7 @@ public class PagamentoDao implements IGenericDao<Pagamento>{
         try {
             ContentValues valores = new ContentValues();
             valores.put(colunas[1], obj.getValorPagamento());
-            valores.put(colunas[2], obj.getDataPagamento().getTime());
+            valores.put(colunas[2], obj.getDataPagamento());
             valores.put(colunas[3], obj.getCodPedido());
 
             String[]identificador = {String.valueOf(obj.getIdPagamento())};
@@ -105,21 +104,15 @@ public class PagamentoDao implements IGenericDao<Pagamento>{
         ArrayList<Pagamento> listaPagamento = new ArrayList<>();
         try {
             Cursor cursor = baseDados.query(tabela, colunas,
-                    null, null, null, null, colunas[0]+"desc");
+                    null, null, null, null, colunas[0]+" desc");
 
             if (cursor.moveToFirst()) {
                 do {
-                    String dataPagamento = cursor.getString(2);
-                    try {
-                        data = format.parse(dataPagamento);
-                    }catch (ParseException ex) {
-                        ex.printStackTrace();
-                    }
 
                     Pagamento pagamento = new Pagamento();
                     pagamento.setIdPagamento(cursor.getInt(0));
                     pagamento.setValorPagamento(cursor.getDouble(1));
-                    pagamento.setDataPagamento(data);
+                    pagamento.setDataPagamento(cursor.getString(2));
                     pagamento.setCodPedido(cursor.getInt(3));
 
                     listaPagamento.add(pagamento);
@@ -139,17 +132,11 @@ public class PagamentoDao implements IGenericDao<Pagamento>{
                     colunas[0]+"= ?", identificador, null, null, null);
 
             if (cursor.moveToFirst()) {
-                String dataPagamento = cursor.getString(2);
-                try {
-                    data = format.parse(dataPagamento);
-                }catch (ParseException ex) {
-                    ex.printStackTrace();
-                }
 
                 Pagamento pagamento = new Pagamento();
                 pagamento.setIdPagamento(cursor.getInt(0));
                 pagamento.setValorPagamento(cursor.getDouble(1));
-                pagamento.setDataPagamento(data);
+                pagamento.setDataPagamento(cursor.getString(2));
                 pagamento.setCodPedido(cursor.getInt(3));
 
                 return pagamento;

@@ -14,11 +14,13 @@ import com.example.pontovenda.model.Pagamento;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class PagamentoListAdapter extends RecyclerView.Adapter<PagamentoListAdapter.ViewHolder> {
 
-    private ArrayList<Pagamento> listaPagamento = new ArrayList<>();
+    private ArrayList<Pagamento> listaPagamento;
     private Context context;
 
     /**
@@ -56,9 +58,12 @@ public class PagamentoListAdapter extends RecyclerView.Adapter<PagamentoListAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Pagamento pagamentoSelecionado = listaPagamento.get(position);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String dataPagamentoFormatada = String.valueOf(pagamentoSelecionado.getDataPagamento());
+
         holder.tvIdPedido.setText(String.valueOf(pagamentoSelecionado.getIdPagamento()));
         holder.tvValor.setText(String.valueOf(pagamentoSelecionado.getValorPagamento()));
-        holder.tvDataPagamento.setText(String.valueOf(pagamentoSelecionado.getDataPagamento()));
+        holder.tvDataPagamento.setText(dataPagamentoFormatada);
         holder.tvCodPedido.setText(String.valueOf(pagamentoSelecionado.getCodPedido()));
     }
 

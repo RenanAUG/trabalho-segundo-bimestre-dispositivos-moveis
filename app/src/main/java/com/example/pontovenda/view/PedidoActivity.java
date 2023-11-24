@@ -1,4 +1,7 @@
 package com.example.pontovenda.view;
 
-public class PedidoActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PedidoActivity extends AppCompatActivity {
+
 }

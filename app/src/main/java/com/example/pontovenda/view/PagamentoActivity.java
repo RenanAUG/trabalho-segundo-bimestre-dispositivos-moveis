@@ -3,6 +3,7 @@ package com.example.pontovenda.view;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.ConditionVariable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,9 @@ import com.example.pontovenda.R;
 import com.example.pontovenda.adapter.PagamentoListAdapter;
 import com.example.pontovenda.controller.PagamentoController;
 import com.example.pontovenda.model.Pagamento;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class PagamentoActivity extends AppCompatActivity {
@@ -28,11 +31,11 @@ public class PagamentoActivity extends AppCompatActivity {
     private EditText edCodPedido;
     private EditText edValor;
     private EditText edDataPagamento;
-    private Button btCadastroPagamento;
+    private FloatingActionButton btCadastroPagamento;
     private RecyclerView rvPagamentos;
     private View viewAlert;
 
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamentos);
@@ -83,6 +86,7 @@ public class PagamentoActivity extends AppCompatActivity {
                   @Override
                   public void onClick(View view) {
                       salvarDados();
+                      atualizarListaPagamento();
                   }
               });
           }
@@ -91,8 +95,10 @@ public class PagamentoActivity extends AppCompatActivity {
     }
 
     public void salvarDados() {
-        String retorno = pagamentoController.salvarPagamento(edCodPedido.getText().toString(),
+        Log.e("erro", edDataPagamento.getText().toString());
+        String retorno = pagamentoController.salvarPagamento(Integer.parseInt(edCodPedido.getText().toString()),
                 edValor.getText().toString(), edDataPagamento.getText().toString());
+
 
         if (retorno != null) {
             if(retorno.contains("Cod. Pedido")){
@@ -107,6 +113,9 @@ public class PagamentoActivity extends AppCompatActivity {
                 edDataPagamento.setError(retorno);
                 edDataPagamento.requestFocus();
             }
+
+            Toast.makeText(this, "Erro ao salvar Pagamento!", Toast.LENGTH_LONG).show();
+
         }else{
             Toast.makeText(this, "Pagamento Salvo com Sucesso!", Toast.LENGTH_LONG).show();
             alertDialog.dismiss();

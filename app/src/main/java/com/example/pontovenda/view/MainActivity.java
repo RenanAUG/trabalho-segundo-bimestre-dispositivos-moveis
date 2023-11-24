@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.pontovenda.R;
+import com.example.pontovenda.dao.CaixaDao;
+import com.example.pontovenda.dao.PagamentoDao;
+import com.example.pontovenda.dao.PedidoDao;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PagamentoDao.getInstancia(this);
+        CaixaDao.getInstancia(this);
     }
 
     public void abrirTelaPagamentos(View view) {
@@ -26,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
     public void abrirTelaCaixa(View view) {
         Intent intent = new Intent(MainActivity.this,
                 CaixaActivity.class);
+
+        startActivity(intent);
+    }
+
+    public void abrirTelaPedidos(View view) {
+        Intent intent = new Intent(MainActivity.this,
+                PedidoActivity.class);
 
         startActivity(intent);
     }

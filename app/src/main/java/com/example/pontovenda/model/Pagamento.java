@@ -6,12 +6,12 @@ public class Pagamento {
 
     private int idPagamento;
     private double valorPagamento;
-    private Date  dataPagamento;
+    private String dataPagamento;
     private int codPedido;
 
     public Pagamento() {}
 
-    public Pagamento(int idPagamento, double valorPagamento, Date dataPagamento, int codPedido) {
+    public Pagamento(int idPagamento, double valorPagamento, String dataPagamento, int codPedido) {
         this.idPagamento = idPagamento;
         this.valorPagamento = valorPagamento;
         this.dataPagamento = dataPagamento;
@@ -34,11 +34,11 @@ public class Pagamento {
         this.valorPagamento = valorPagamento;
     }
 
-    public Date getDataPagamento() {
+    public String getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(Date dataPagamento) {
+    public void setDataPagamento(String dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 
