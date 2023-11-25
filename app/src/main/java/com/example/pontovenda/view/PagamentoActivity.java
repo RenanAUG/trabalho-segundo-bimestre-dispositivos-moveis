@@ -1,6 +1,7 @@
 package com.example.pontovenda.view;
 
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.ConditionVariable;
 import android.util.Log;
@@ -22,6 +23,7 @@ import com.example.pontovenda.model.Pagamento;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PagamentoActivity extends AppCompatActivity {
@@ -63,6 +65,9 @@ public class PagamentoActivity extends AppCompatActivity {
         edDataPagamento = viewAlert.findViewById(R.id.edDataPagamento);
         edValor = viewAlert.findViewById(R.id.edValor);
 
+        edDataPagamento.setEnabled(false);
+        edDataPagamento.setText(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("NOVO PAGAMENTO"); //Adicionando título ao popup
         builder.setView(viewAlert); //Setando o layout
@@ -95,8 +100,7 @@ public class PagamentoActivity extends AppCompatActivity {
     }
 
     public void salvarDados() {
-        Log.e("erro", edDataPagamento.getText().toString());
-        String retorno = pagamentoController.salvarPagamento(Integer.parseInt(edCodPedido.getText().toString()),
+        String retorno = pagamentoController.salvarPagamento(edCodPedido.getText().toString(),
                 edValor.getText().toString(), edDataPagamento.getText().toString());
 
 
@@ -114,7 +118,7 @@ public class PagamentoActivity extends AppCompatActivity {
                 edDataPagamento.requestFocus();
             }
 
-            Toast.makeText(this, "Erro ao salvar Pagamento!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
 
         }else{
             Toast.makeText(this, "Pagamento Salvo com Sucesso!", Toast.LENGTH_LONG).show();

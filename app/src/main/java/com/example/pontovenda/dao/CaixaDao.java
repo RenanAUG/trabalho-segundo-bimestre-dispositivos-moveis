@@ -57,9 +57,8 @@ public class CaixaDao implements IGenericDao<Caixa> {
     public long insert(Caixa obj) {
         try {
             ContentValues valores = new ContentValues();
-            valores.put(colunas[0], obj.getIdCaixa());
-            valores.put(colunas[1], obj.getDataAbertura().getTime());
-            valores.put(colunas[2], obj.getDataFechacmento().getTime());
+            valores.put(colunas[1], obj.getDataAbertura());
+            valores.put(colunas[2], obj.getDataFechacmento());
 
             return baseDados.insert(tabela, null, valores);
 
@@ -73,8 +72,8 @@ public class CaixaDao implements IGenericDao<Caixa> {
     public long update(Caixa obj) {
         try {
             ContentValues valores = new ContentValues();
-            valores.put(colunas[1], obj.getDataAbertura().getTime());
-            valores.put(colunas[2], obj.getDataFechacmento().getTime());
+            valores.put(colunas[1], obj.getDataAbertura());
+            valores.put(colunas[2], obj.getDataFechacmento());
 
             String[]identificador = {String.valueOf(obj.getIdCaixa())};
 
@@ -104,23 +103,15 @@ public class CaixaDao implements IGenericDao<Caixa> {
         ArrayList<Caixa> listaCaixa = new ArrayList<>();
         try {
             Cursor cursor = baseDados.query(tabela, colunas,
-                    null, null, null, null, colunas[0]+"desc");
+                    null, null, null, null, colunas[0]+" desc");
 
             if (cursor.moveToFirst()) {
                 do {
-                    String dataAberturaString = cursor.getString(1);
-                    String dataFechamentoString = cursor.getString(2);
-                    try {
-                        dataAbertura = format.parse(dataAberturaString);
-                        dataFechamento = format.parse(dataFechamentoString);
-                    }catch (ParseException ex) {
-                        ex.printStackTrace();
-                    }
 
                     Caixa caixa = new Caixa();
                     caixa.setIdCaixa(cursor.getInt(0));
-                    caixa.setDataAbertura(dataAbertura);
-                    caixa.setDataFechacmento(dataFechamento);
+                    caixa.setDataAbertura(cursor.getString(1));
+                    caixa.setDataFechacmento(cursor.getString(2));
 
                     listaCaixa.add(caixa);
                 }while (cursor.moveToNext());
@@ -139,19 +130,11 @@ public class CaixaDao implements IGenericDao<Caixa> {
                     colunas[0]+"= ?", identificador, null, null, null);
 
             if (cursor.moveToFirst()) {
-                String dataAberturaString = cursor.getString(1);
-                String dataFechamentoString = cursor.getString(2);
-                try {
-                    dataAbertura = format.parse(dataAberturaString);
-                    dataFechamento = format.parse(dataFechamentoString);
-                }catch (ParseException ex) {
-                    ex.printStackTrace();
-                }
 
                 Caixa caixa = new Caixa();
                 caixa.setIdCaixa(cursor.getInt(0));
-                caixa.setDataAbertura(dataAbertura);
-                caixa.setDataFechacmento(dataFechamento);
+                caixa.setDataAbertura(cursor.getString(1));
+                caixa.setDataFechacmento(cursor.getString(2));
 
                 return caixa;
             }

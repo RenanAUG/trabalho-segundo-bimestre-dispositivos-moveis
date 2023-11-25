@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.pontovenda.view.LoginActivity" />
+        <activity android:name="com.example.pontovenda.view.PagamentoActivity" />
+        <activity android:name="com.example.pontovenda.view.CaixaActivity" />
+        <activity android:name="com.example.pontovenda.view.PedidoActivity" />
     </application>
 
 </manifest>

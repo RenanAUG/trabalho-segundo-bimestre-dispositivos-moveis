@@ -6,13 +6,13 @@ public class Caixa {
 
     private int idCaixa;
 
-    private Date dataAbertura;
+    private String dataAbertura;
 
-    private Date dataFechacmento;
+    private String dataFechacmento;
 
     public Caixa() {}
 
-    public Caixa(int idCaixa, Date dataAbertura, Date dataFechacmento) {
+    public Caixa(int idCaixa, String dataAbertura, String dataFechacmento) {
         this.idCaixa = idCaixa;
         this.dataAbertura = dataAbertura;
         this.dataFechacmento = dataFechacmento;
@@ -26,19 +26,19 @@ public class Caixa {
         this.idCaixa = idCaixa;
     }
 
-    public Date getDataAbertura() {
+    public String getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(Date dataAbertura) {
+    public void setDataAbertura(String dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public Date getDataFechacmento() {
+    public String getDataFechacmento() {
         return dataFechacmento;
     }
 
-    public void setDataFechacmento(Date dataFechacmento) {
+    public void setDataFechacmento(String dataFechacmento) {
         this.dataFechacmento = dataFechacmento;
     }
 }

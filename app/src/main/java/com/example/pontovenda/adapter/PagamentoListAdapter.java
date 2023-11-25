@@ -58,12 +58,10 @@ public class PagamentoListAdapter extends RecyclerView.Adapter<PagamentoListAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Pagamento pagamentoSelecionado = listaPagamento.get(position);
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String dataPagamentoFormatada = String.valueOf(pagamentoSelecionado.getDataPagamento());
 
         holder.tvIdPedido.setText(String.valueOf(pagamentoSelecionado.getIdPagamento()));
         holder.tvValor.setText(String.valueOf(pagamentoSelecionado.getValorPagamento()));
-        holder.tvDataPagamento.setText(dataPagamentoFormatada);
+        holder.tvDataPagamento.setText(pagamentoSelecionado.getDataPagamento());
         holder.tvCodPedido.setText(String.valueOf(pagamentoSelecionado.getCodPedido()));
     }
 
