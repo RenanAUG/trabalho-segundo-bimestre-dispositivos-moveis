@@ -63,4 +63,14 @@
         android:src="@drawable/ic_plus"
         android:backgroundTint="@android:color/holo_green_dark"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btVoltar"
+        android:text="Voltar"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/material_dynamic_primary50"/>
+
+
 </RelativeLayout>
