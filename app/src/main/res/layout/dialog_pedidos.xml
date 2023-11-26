@@ -5,45 +5,41 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:text="LOGIN"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login: "
-        android:textSize="15dp"/>
+        android:text="Nome do Pedido:"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edLogin"/>
+        android:inputType="numberDecimal"
+        android:paddingStart="5dp"
+        android:hint="Nome"
+        android:id="@+id/edNome"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Senha: "
-        android:textSize="15dp"/>
+        android:text="Quantidade do Pedido: "/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edSenha"/>
+        android:inputType="date"
+        android:id="@+id/edQuantidade"/>
 
-    <Button
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor do Pedido: "/>
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:id="@+id/btEntrar"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cadastrar"
-        android:id="@+id/btCadastrar"/>
+        android:inputType="date"
+        android:hint="R$0.00"
+        android:id="@+id/edValor"/>
 
 </LinearLayout>

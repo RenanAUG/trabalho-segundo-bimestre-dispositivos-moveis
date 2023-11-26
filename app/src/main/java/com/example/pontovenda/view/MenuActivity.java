@@ -36,10 +36,4 @@ public class MenuActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-    public void abrirLoginCadastro(View view){
-        Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
-
-        startActivity(intent);
-    }
 }
