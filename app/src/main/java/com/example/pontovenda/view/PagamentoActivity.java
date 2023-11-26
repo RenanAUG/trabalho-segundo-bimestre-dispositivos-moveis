@@ -59,7 +59,7 @@ public class PagamentoActivity extends AppCompatActivity {
         btVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PagamentoActivity.this, MainActivity.class);
+                Intent intent = new Intent(PagamentoActivity.this, MenuActivity.class);
                 startActivity(intent);
 
             }

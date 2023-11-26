@@ -14,7 +14,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
         android:paddingStart="5dp"
         android:hint="Nome"
         android:id="@+id/edNome"/>
@@ -27,7 +26,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="numberDecimal"
         android:id="@+id/edQuantidade"/>
 
     <TextView
@@ -38,7 +37,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="numberDecimal"
         android:hint="R$0.00"
         android:id="@+id/edValor"/>
 

@@ -49,6 +49,7 @@ public class PedidoDao implements IGenericDao<Pedido>{
     public long insert(Pedido obj) {
         try {
             ContentValues valores = new ContentValues();
+            valores.put(colunas[0], obj.getIdPedido());
             valores.put(colunas[1], obj.getNome());
             valores.put(colunas[2], obj.getQuantidade());
             valores.put(colunas[3], obj.getValorTotal());

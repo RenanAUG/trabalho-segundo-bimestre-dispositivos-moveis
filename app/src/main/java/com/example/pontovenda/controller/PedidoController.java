@@ -1,6 +1,7 @@
 package com.example.pontovenda.controller;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.pontovenda.dao.PedidoDao;
 import com.example.pontovenda.model.Pedido;
@@ -18,23 +19,30 @@ public class PedidoController {
 
     public String salvarPedido(String nome, int quantidade, double valor){
         Random random = new Random();
-        if(nome.equals(" ") || nome.isEmpty()){
-            return "nomeVazio";
-        }
-        if(quantidade == 0){
-            return "quantidadeVazio";
-        }
-        if(valor == 0){
-            return "valorVazio";
-        }
+        try{
+            if(nome.equals(" ") || nome.isEmpty()){
+                return "nomeVazio";
+            }
+            if(quantidade <= 0){
+                return "quantidadeVazio";
+            }
+            if(valor <= 0){
+                return "valorVazio";
+            }
 
-        Pedido pedidoObj = new Pedido();
-        pedidoObj.setIdPedido(random.nextInt(1000000) + 1);
-        pedidoObj.setNome(nome);
-        pedidoObj.setQuantidade(quantidade);
-        pedidoObj.setValorTotal(valor);
+            Pedido pedidoObj = new Pedido();
+            int idAleatorio = random.nextInt(1000000) + 1;
+            pedidoObj.setIdPedido(idAleatorio);
+            pedidoObj.setNome(nome);
+            pedidoObj.setQuantidade(quantidade);
+            pedidoObj.setValorTotal(valor);
+            Log.e("teste", String.valueOf(pedidoObj.getIdPedido()));
 
-        return null;
+            PedidoDao.getInstancia(context).insert(pedidoObj);
+            return "sucesso";
+        }catch(Exception e){
+            return e.toString();
+        }
     }
 
     public ArrayList<Pedido> retornaTodosPedidos(){
