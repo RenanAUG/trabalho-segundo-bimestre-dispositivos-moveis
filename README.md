@@ -29,8 +29,7 @@ Utilize os princípios do design inclusivo para abranger o maior número de usu�
 
 <h3>Pagamentos e Pedidos:</h3>
 
-![tela_pagamentos](https://github.com/RenanAUG/trabalho-segundo-bimestre-dispositivos-moveis/assets/115120374/89078a6e-e831-477a-8d16-77fe928fb2e2)
-![tela_pedidos](https://github.com/RenanAUG/trabalho-segundo-bimestre-dispositivos-moveis/assets/115120374/f30fdbbd-a6ab-463c-b7dd-44de85fdfbff)
+![tela_pagamentos](https://github.com/RenanAUG/trabalho-segundo-bimestre-dispositivos-moveis/assets/115120374/89078a6e-e831-477a-8d16-77fe928fb2e2) ![tela_pedidos](https://github.com/RenanAUG/trabalho-segundo-bimestre-dispositivos-moveis/assets/115120374/f30fdbbd-a6ab-463c-b7dd-44de85fdfbff)
 
 
 <h3>Caixa:</h3>
