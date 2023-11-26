@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pontovenda.R;
 import com.example.pontovenda.controller.LoginController;
+import com.example.pontovenda.model.Login;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        loginController = new LoginController(this);
+
         edLogin = findViewById(R.id.edLogin);
         edSenha = findViewById(R.id.edSenha);
         btEntrar = findViewById(R.id.btEntrar);
@@ -32,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         btEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                acessarMenu();
+                efetuarLogin();
             }
         });
 
@@ -58,6 +63,16 @@ public class LoginActivity extends AppCompatActivity {
             Log.e("teste", "sucesso!");
         }else{
             Log.e("teste", "erro!");
+        }
+    }
+
+    public void efetuarLogin(){
+        ArrayList<Login> listaLogins = loginController.retornaTodosLogins();
+        for(Login l : listaLogins){
+            if(edLogin.getText().toString().equals(l.getLogin()) &&
+                    edSenha.getText().toString().equals(l.getSenha())){
+                Log.e("teste", "encontrado");
+            }
         }
     }
 }
