@@ -1,6 +1,7 @@
 package com.example.pontovenda.view;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ConditionVariable;
@@ -36,6 +37,7 @@ public class PagamentoActivity extends AppCompatActivity {
     private FloatingActionButton btCadastroPagamento;
     private RecyclerView rvPagamentos;
     private View viewAlert;
+    private Button btVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,21 @@ public class PagamentoActivity extends AppCompatActivity {
         pagamentoController = new PagamentoController(this);
         rvPagamentos = findViewById(R.id.rvPagamentos);
         btCadastroPagamento = findViewById(R.id.btCadastroPagamento);
+        btVoltar = findViewById(R.id.btVoltar);
 
         btCadastroPagamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 abrirCadastro();
+            }
+        });
+
+        btVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PagamentoActivity.this, MainActivity.class);
+                startActivity(intent);
+
             }
         });
 
