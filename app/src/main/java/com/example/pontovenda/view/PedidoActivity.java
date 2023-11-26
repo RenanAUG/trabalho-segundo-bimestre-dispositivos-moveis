@@ -75,9 +75,9 @@ public class PedidoActivity extends AppCompatActivity {
         edValor = viewAlert.findViewById(R.id.edValor);
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("NOVO PEDIDO"); //Adicionando título ao popup
-        builder.setView(viewAlert); //Setando o layout
-        builder.setCancelable(false); //não deixa fechar o popup se clicar fora dele
+        builder.setTitle("NOVO PEDIDO");
+        builder.setView(viewAlert);
+        builder.setCancelable(false);
 
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
@@ -126,7 +126,7 @@ public class PedidoActivity extends AppCompatActivity {
             edValor.requestFocus();
         }
         else if(retorno.equals("sucesso")){
-            Toast.makeText(this,"Pedido salvo com sucesso!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Pedido: " + pedidoController.getIdPedidoGerado() + " salvo com sucesso!", Toast.LENGTH_LONG).show();
             edNome.setText("");
             edQuantidade.setText("");
             edValor.setText("");

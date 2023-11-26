@@ -14,6 +14,7 @@ import com.example.pontovenda.controller.LoginController;
 import com.example.pontovenda.dao.CaixaDao;
 import com.example.pontovenda.dao.PagamentoDao;
 import com.example.pontovenda.dao.PedidoDao;
+import com.example.pontovenda.helper.SQLiteDataHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         edSenha = findViewById(R.id.edSenha);
         btEntrar = findViewById(R.id.btEntrar);
         btCadastrar = findViewById(R.id.btCadastrar);
+
 
         btEntrar.setOnClickListener(new View.OnClickListener() {
             @Override

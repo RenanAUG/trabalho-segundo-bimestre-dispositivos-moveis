@@ -12,6 +12,7 @@ import java.util.Random;
 public class PedidoController {
 
     private Context context;
+    private int pedidoId;
 
     public PedidoController(Context context) {
         this.context = context;
@@ -32,6 +33,7 @@ public class PedidoController {
 
             Pedido pedidoObj = new Pedido();
             int idAleatorio = random.nextInt(1000000) + 1;
+            setIdPedidoGerado(idAleatorio);
             pedidoObj.setIdPedido(idAleatorio);
             pedidoObj.setNome(nome);
             pedidoObj.setQuantidade(quantidade);
@@ -47,5 +49,13 @@ public class PedidoController {
 
     public ArrayList<Pedido> retornaTodosPedidos(){
         return PedidoDao.getInstancia(context).getAll();
+    }
+
+    public int getIdPedidoGerado(){
+        return this.pedidoId;
+    }
+
+    public void setIdPedidoGerado(int id){
+        this.pedidoId = id;
     }
 }
