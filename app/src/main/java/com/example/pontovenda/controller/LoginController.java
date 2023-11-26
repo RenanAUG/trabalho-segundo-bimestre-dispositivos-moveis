@@ -31,14 +31,10 @@ public class LoginController {
             loginObj.setLogin(login);
             loginObj.setSenha(senha);
 
-            Log.d("Teste", "ANTES DE INSERIR");
             LoginDao.getInstancia(context).insert(loginObj);
-            Log.d("Teste", "DEPOIS DE INSERIR");
         }catch(Exception e){
-            Log.d("Teste", "Erro ao salvar conta");
             return "Erro ao salvar conta";
         }
-
         return null;
     }
 
