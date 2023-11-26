@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PontoVenda"
         tools:targetApi="31">
         <activity
+            android:name=".view.MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,10 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pontovenda.view.LoginActivity" />
-        <activity android:name="com.example.pontovenda.view.PagamentoActivity" />
-        <activity android:name="com.example.pontovenda.view.CaixaActivity" />
-        <activity android:name="com.example.pontovenda.view.PedidoActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.PagamentoActivity" />
+        <activity android:name=".view.CaixaActivity" />
+        <activity android:name=".view.PedidoActivity" />
     </application>
 
 </manifest>

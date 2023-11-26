@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,20 +60,29 @@ public class LoginActivity extends AppCompatActivity {
     public void cadastrarLogin(){
         String retorno = loginController.salvarLogin(edLogin.getText().toString(), edSenha.getText().toString());
 
-        if(retorno == null){
-            Log.e("teste", "sucesso!");
-        }else{
-            Log.e("teste", "erro!");
+        if(retorno.equals("loginVazio")){
+            Toast.makeText(this, "Preencha o campo de login", Toast.LENGTH_LONG).show();
+        }
+        else if(retorno.equals("senhaVazio")){
+            Toast.makeText(this, "Preencha o campo de senha", Toast.LENGTH_LONG).show();
+        }
+        else if(retorno.equals("loginExistente")){
+            Toast.makeText(this, "Conta já existente no sistema!", Toast.LENGTH_LONG).show();
+        }
+        else if(retorno.equals("sucesso")){
+            Toast.makeText(this, "Sucesso ao cadastrar", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
         }
     }
 
     public void efetuarLogin(){
-        ArrayList<Login> listaLogins = loginController.retornaTodosLogins();
-        for(Login l : listaLogins){
-            if(edLogin.getText().toString().equals(l.getLogin()) &&
-                    edSenha.getText().toString().equals(l.getSenha())){
-                Log.e("teste", "encontrado");
-            }
+        String resultado = loginController.efetuaLogin(edLogin.getText().toString(), edSenha.getText().toString());
+        if(resultado == "sucesso"){
+            Toast.makeText(this, "Sucesso ao logar", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Erro ao logar", Toast.LENGTH_LONG).show();
         }
     }
 }

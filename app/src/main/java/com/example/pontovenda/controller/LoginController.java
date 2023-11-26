@@ -2,6 +2,7 @@ package com.example.pontovenda.controller;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.pontovenda.dao.LoginDao;
 import com.example.pontovenda.dao.PagamentoDao;
@@ -19,26 +20,43 @@ public class LoginController {
     }
 
     public String salvarLogin(String login, String senha){
+        ArrayList<Login> listaLogins = retornaTodosLogins();
         try{
             if(login.equals(" ") || login.isEmpty()){
-                return "Preencha o campo de login!";
+                return "loginVazio";
             }
             if(senha.equals(" ") || senha.isEmpty()){
-                return "Preencha o campo de senha!";
+                return "senhaVazio";
+            }
+            for(Login l : listaLogins){
+                if(login.equals(l.getLogin())){
+                    return "loginExistente";
+                }
             }
 
             Login loginObj = new Login();
             loginObj.setLogin(login);
             loginObj.setSenha(senha);
 
-            Log.e("teste", "antes de inserir");
             LoginDao.getInstancia(context).insert(loginObj);
-            Log.e("teste", "depois de inserir");
+            return "sucesso";
         }catch(Exception e){
-            return "Erro ao salvar conta";
+            return e.toString();
         }
-        return null;
     }
+
+    public String efetuaLogin(String login, String senha){
+        ArrayList<Login> listaLogins = retornaTodosLogins();
+        for(Login l : listaLogins){
+            if(login.equals(l.getLogin()) && senha.equals(l.getSenha())){
+                Log.e("teste", "encontrado");
+                return "sucesso";
+            }
+        }
+        return "não encontrado";
+        }
+
+
 
     public ArrayList<Login> retornaTodosLogins() {
         return LoginDao.getInstancia(context).getAll();
